@@ -1,0 +1,20 @@
+<div class="row justify-content-center">
+    <div class="col-sm-4 mb-3">
+      <label for="country">País</label>     
+      <div class="" ngbDropdown #myDrop="ngbDropdown">
+        <button class="btn btn-outline-primary mr-2" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">{{txtPais}}
+            <img [src]="flag" width="13px" height="13px">
+        </button>
+        <div class="overflow-auto" ngbDropdownMenu aria-labelledby="dropdownManual">
+          <button ngbDropdownItem  [value]="pais.name" *ngFor="let pais of listaPaises;"  (click)="paisSeleccionado(pais)">{{pais.name}}
+              <img [src]="pais.flag" width="13px" height="13px">
+          </button>          
+        </div>
+      </div>
+      <!-- <div *ngIf="txtPais == 'Seleccionar'" class="alert-danger d-inline-flex">
+        El país es requirido.
+      </div>             -->
+    </div>   
+    <div class="col-sm-2 mb-3"></div>      
+</div>
+ 

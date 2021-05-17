@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+        
+  </head>
+  <body class="bg-light">
+    
+<div class="container">  
+<br>
+  <div class="row justify-content-center">    
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3 text-center">Alta repartidores</h4>
+      <form class="needs-validation" novalidate [formGroup]="formGroup">
+        <div class="row justify-content-center">
+          <div class="col-md-4 mb-3">
+            <label for="firstName">Nombre</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required formControlName="nombre">
+            <div *ngIf="formGroup.get('nombre')!.invalid && (formGroup.get('nombre')!.dirty || formGroup.get('nombre')!.touched)" class="alert-danger d-inline-flex">
+              El nombre es requirido.
+            </div>
+          </div> 
+          <div class="col-sm-2">
+            <label for="address">DNI</label>
+            <input type="text" class="form-control" id="address" placeholder="" required formControlName="dni">
+            <div *ngIf="formGroup.get('dni')!.invalid && (formGroup.get('dni')!.dirty || formGroup.get('dni')!.touched)" class="alert-danger d-inline-flex">
+              La dni es requerido.
+            </div>
+          </div>        
+        </div>       
+        <div class="row">
+        <!-- <div class="col-sm-2">
+          <label for="address">DNI</label>
+          <input type="text" class="form-control" id="address" placeholder="" required formControlName="dni">
+          <div *ngIf="formGroup.get('dni')!.invalid && (formGroup.get('dni')!.dirty || formGroup.get('dni')!.touched)" class="alert-danger d-inline-flex">
+            La dni es requerido.
+          </div>
+        </div> -->
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-sm-2 mb-3">
+          <label for="address2">Edad <span class="text-muted"></span></label>
+          <input type="text" class="form-control" id="address2" placeholder="" formControlName="edad">
+          <div *ngIf="formGroup.get('edad')!.invalid && (formGroup.get('edad')!.dirty || formGroup.get('edad')!.touched)" class="alert-danger d-inline-flex">
+            La edad es requerida.
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <label for="address">Capacidad</label>
+          <input type="text" class="form-control" id="address" placeholder="" required formControlName="capacidad">
+          <div *ngIf="formGroup.get('capacidad')!.invalid && (formGroup.get('capacidad')!.dirty || formGroup.get('capacidad')!.touched)" class="alert-danger d-inline-flex">
+            La capacidad es requerida.
+          </div>
+        </div>
+      </div>
+      <div class="row">        
+      </div>
+      <!-- componente hijo -->
+      <app-lista-paises (enviarPais)="asignarPais($event)"></app-lista-paises>
+        
+        <div class="row justify-content-center">          
+        <div class="col-sm-6 custom-control custom-checkbox" style="margin-left: 30px;">          
+          <input type="checkbox" class="custom-control-input" id="same-address" (click)="validaCheckBox()" formControlName="unidadPrpia">
+          <label class="custom-control-label" for="same-address">Unidad Propia</label>
+          <div *ngIf="!validaUnidad && (formGroup.get('unidadPrpia')!.dirty || formGroup.get('unidadPrpia')!.touched)" class="alert-danger d-inline-flex">
+            <span>La unidad es requirida.</span> 
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+        <hr class="mb-4">
+        <button [disabled]="!(this.formGroup.status == 'VALID')" class="btn btn-primary btn-lg btn-block" (click)="guardar()" >Guardar</button>
+      </div>
+      </div>
+      </form>
+    </div>
+  </div>  
+</div>
+  </body>
+</html>
