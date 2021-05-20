@@ -1,22 +1,56 @@
 
 <ng-template #content let-modal>
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <h4 class="modal-title" id="modal-basic-title">Modificar Pizza</h4>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
     <div class="modal-body">
-      <form>
-        <div class="form-group">
-          <label for="dateOfBirth">Date of birth</label>
-          <div class="input-group">
-            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-            <div class="input-group-append">
-              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-            </div>
+      <form  [formGroup]="formGroup">
+        <div class="row">
+          <div class="col-sm-3"></div>                  
+          <div class="col-sm-6">
+              <div class="form-group">
+                  <label for="ingredientes">Ingredientes</label>
+                  <textarea type="" class="form-control" id="ingredientes" aria-describedby="emailHelp" placeholder="" formControlName="ingredientes"></textarea>
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
           </div>
+          <div class="col-sm-3"></div>                  
+      </div>  
+      <div class="row">
+          <div class="col-sm-3">
+          </div>           
+          <div class="col-sm-3">
+              <div class="form-group">
+                  <label for="peso">Peso</label>
+                  <input type="text" class="form-control" id="peso" placeholder="" formControlName="peso">
+              </div>
+          </div>
+          <div class="col-sm-3">
+          </div>                    
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
         </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+              <label for="precio">Precio</label>
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                  </div>
+                  <input type="text" id="precio" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="precio">
+                  <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                  </div>
+                </div>
+          </div>
+          <div class="col-sm-3">
+          </div>
+      </div>
+      </div>
       </form>
     </div>
     <div class="modal-footer">
@@ -28,4 +62,4 @@
   
   <hr>
   
-  <pre>{{ closeResult }}</pre>
+  <!-- <pre>{{ closeResult }}</pre> -->

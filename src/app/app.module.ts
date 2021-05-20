@@ -21,6 +21,7 @@ import { DetallePaisComponent } from './components/detalle-pais/detalle-pais.com
 import { PizzaComponent } from './components/pizza/pizza.component';
 import { AltaPizzaComponent } from './components/alta-pizza/alta-pizza.component';
 import { ModificarPizzaComponent } from './components/modificar-pizza/modificar-pizza.component';
+import { EliminarPizzaComponent } from './components/eliminar-pizza/eliminar-pizza.component';
 // import { HttpService } from "./services/http.service";
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ModificarPizzaComponent } from './components/modificar-pizza/modificar-
     DetallePaisComponent,
     PizzaComponent,
     AltaPizzaComponent,
-    ModificarPizzaComponent
+    ModificarPizzaComponent,
+    EliminarPizzaComponent
   ],
   imports: [
     BrowserModule,

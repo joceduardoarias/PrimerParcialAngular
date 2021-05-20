@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService  } from "../../services/http.service";
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -20,8 +21,9 @@ export class HomeComponent implements OnInit {
         this.id = data.id;
         this.url = data.url;
         this.img = data.avatar_url
-    })
+    });
     
+    console.log(localStorage.getItem("usuario"));        
     
   }
 

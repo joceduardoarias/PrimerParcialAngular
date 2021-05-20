@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Bienvenido a la Sala de juegos',
+        title: 'Bienvenido !!!',
         showConfirmButton: false,
         timer: 1500
       });

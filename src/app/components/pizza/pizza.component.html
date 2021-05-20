@@ -30,7 +30,7 @@
   </header>
   
     <app-alta-pizza *ngIf="altaPizza" (enviar)="manejarNuevaPizza($event)"></app-alta-pizza>
-  
+  <br>
   <main>
     <div *ngIf="listaPizza!=null" class="row row-cols-1 row-cols-md-3 mb-3 text-center">      
       <div class="col" *ngFor="let pizza of listaPizza">
@@ -45,6 +45,7 @@
               <li>{{pizza.peso}}</li>
             </ul>
             <app-modificar-pizza [pizza]="pizza"></app-modificar-pizza>
+            <app-eliminar-pizza [pizza]="pizza"></app-eliminar-pizza>
           </div>
         </div>
       </div>
