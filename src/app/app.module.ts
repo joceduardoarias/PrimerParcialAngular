@@ -27,6 +27,8 @@ import { EliminarPizzaComponent } from './components/eliminar-pizza/eliminar-piz
 // Import library module spinner
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { RegistrarComponent } from './components/registrar/registrar.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AltaPizzaComponent,
     ModificarPizzaComponent,
     EliminarPizzaComponent,
+    NavBarComponent,
+    RegistrarComponent,
   ],
   imports: [
     BrowserModule,

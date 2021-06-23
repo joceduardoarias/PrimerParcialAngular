@@ -5,13 +5,14 @@ import { AltaRepartidorComponent } from '../components/alta-repartidor/alta-repa
 import { HomeComponent } from '../components/home/home.component';
 import { PizzaComponent } from '../components/pizza/pizza.component';
 import { RepartidorDetalleComponent } from '../components/repartidor-detalle/repartidor-detalle.component';
+import { CheckLoginGuard } from '../guards/check-login.guard';
 
 const routes: Routes = [
   {path:'home',component:HomeComponent},
-  {path:'altaRepartidor',component:AltaRepartidorComponent},
-  {path:'repartidorDetalle',component:RepartidorDetalleComponent},
+  {path:'altaRepartidor',component:AltaRepartidorComponent,canActivate:[CheckLoginGuard]},
+  {path:'repartidorDetalle',component:RepartidorDetalleComponent,canActivate:[CheckLoginGuard]},
   {path:'pizzas',component:PizzaComponent},
-  {path:'altaPizza',component:AltaPizzaComponent},
+  {path:'altaPizza',component:AltaPizzaComponent,canActivate:[CheckLoginGuard]},
 ];
 
 @NgModule({

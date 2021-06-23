@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { Router } from "@angular/router";
+import { first } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -33,21 +34,15 @@ public async registrar(email:string, password:string) {
   return this.afAuth.createUserWithEmailAndPassword(email,password);
 }
 
+getCurrentUser() {
+  return this.afAuth.authState.pipe(first()).toPromise();
+}
+
 public isAuth(){
-  
- return new Promise((resolve, reject) => {
-   this.afAuth.onAuthStateChanged(user => {
-     if (user) {
-       resolve(user);
-       if(user.email)
-       this.usuarioLogueadoEmail = user.email;
-       //  console.log(user.email + " is logged in!");
-     } else {
-       reject(user);
-       //  console.log('User is logged out!');
-     }
-   });
-  });
-  
+   
+  return this.afAuth.authState;
+   
+ }
+ 
 }
-}
+
