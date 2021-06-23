@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500
       });
-      this.router.navigate(['/home']);
+      this.router.navigate(['/pizza/home']);
       localStorage.setItem("usuario",this.email.value);
     }, error => {
       console.log(error.message);

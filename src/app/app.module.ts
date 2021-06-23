@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +24,10 @@ import { ModificarPizzaComponent } from './components/modificar-pizza/modificar-
 import { EliminarPizzaComponent } from './components/eliminar-pizza/eliminar-pizza.component';
 // import { HttpService } from "./services/http.service";
 
+// Import library module spinner
+import { NgxSpinnerModule } from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +42,7 @@ import { EliminarPizzaComponent } from './components/eliminar-pizza/eliminar-piz
     PizzaComponent,
     AltaPizzaComponent,
     ModificarPizzaComponent,
-    EliminarPizzaComponent
+    EliminarPizzaComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +53,12 @@ import { EliminarPizzaComponent } from './components/eliminar-pizza/eliminar-piz
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService  } from "../../services/http.service";
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   id :string = "";
   url: string="";
   img: string = "";
-  constructor( private http: HttpService) { }
+  
+  constructor( private http: HttpService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.http.obtenerData().subscribe((data:any)=>{
@@ -23,8 +25,13 @@ export class HomeComponent implements OnInit {
         this.img = data.avatar_url
     });
     
-    console.log(localStorage.getItem("usuario"));        
-    
-  }
+     /** spinner starts on init */
+     this.spinner.show();
+
+     setTimeout(() => {
+       /** spinner ends after 5 seconds */
+       this.spinner.hide();
+     }, 5000);
+   }    
 
 }
