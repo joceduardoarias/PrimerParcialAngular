@@ -1,66 +1,87 @@
-
-<form  [formGroup]="formGruop">
-    <div class="container text-center">
-        <div class="pricing-header p-3 pb-md-4 mx-auto">
-            <h1 class="display-4 fw-normal">Alta pizzas</h1>
-        </div>
-        <div class="row">
-            <div class="col-sm-3">
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder="" formControlName="nombre">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label for="ingredientes">Ingredientes</label>
-                    <input type="text" class="form-control" id="ingredientes" aria-describedby="emailHelp" placeholder="" formControlName="ingredientes">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-            </div>
-            <div class="col-sm-3">
-            </div>
-        </div>  
-        <div class="row">
-            <div class="col-sm-3">
-            </div>           
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label for="peso">Peso</label>
-                    <input type="text" class="form-control" id="peso" placeholder="" formControlName="peso">
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="form-group">
-                    <label for="precio">Precio</label>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text">$</span>
-                        </div>
-                        <input type="text" id="precio" class="form-control" aria-label="Amount (to the nearest dollar)" formControlName="precio">
-                        <div class="input-group-append">
-                          <span class="input-group-text">.00</span>
-                        </div>
-                      </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4">
-                    <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
-            </div>
-            <div class="col-sm-4">
-                <button type="button" class="w-100 btn btn-lg btn-primary" (click)="altaPizza()">Nueva Pizza</button>
-            </div>
-            <div class="col-sm-4">
-                <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
-            </div>
-        </div>
+<form [formGroup]="formGruop">
+  <div class="container text-center">
+    <div class="pricing-header p-3 pb-md-4 mx-auto">
+      <h1 class="display-4 fw-normal">Alta pizzas</h1>
     </div>
-  </form>
-   
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" placeholder=""
+            formControlName="nombre">
+          <div
+            *ngIf="formGruop.get('nombre')!.invalid && (formGruop.get('nombre')!.dirty || formGruop.get('nombre')!.touched)"
+            class="alert-danger d-inline-flex"><small id="emailHelp" class="form-text text-muted">Campo
+              requerido</small></div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="ingredientes">Ingredientes</label>
+          <input type="text" class="form-control" id="ingredientes" aria-describedby="emailHelp" placeholder=""
+            formControlName="ingredientes">
+          <div *ngIf="formGruop.get('ingredientes')!.invalid && (formGruop.get('ingredientes')!.dirty ||
+            formGruop.get('ingredientes')!.touched)" class="alert-danger d-inline-flex"><small id="emailHelp"
+              class="form-text text-muted">Campo requerido</small></div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="peso">Peso</label>
+          <input type="number" class="form-control" id="peso" placeholder="" formControlName="peso">
+          <div *ngIf="formGruop.get('peso')!.invalid && (formGruop.get('peso')!.dirty || formGruop.get('peso')!.touched)"  class="alert-danger d-inline-flex">
+            <div *ngIf="formGruop.get('peso')!.errors!.required"  class="alert-danger d-inline-flex">
+                <span>peso requerido</span>                       
+            </div>      
+            <div *ngIf="formGruop.get('peso')!.errors!.max"  class="alert-danger d-inline-flex">
+                <span>peso debe ser menor a 1000</span>
+            </div>
+            <div *ngIf="formGruop.get('peso')!.errors!.min"  class="alert-danger d-inline-flex">
+                <span>peso debe ser mayor  a 500</span>
+            </div>            
+        </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="precio">Precio</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="text" id="precio" class="form-control" aria-label="Amount (to the nearest dollar)"
+              formControlName="precio">
+            <div class="input-group-append">
+              <span class="input-group-text">.00</span>
+            </div>
+          </div>
+          <div *ngIf="formGruop.get('precio')!.invalid && (formGruop.get('precio')!.dirty ||
+            formGruop.get('precio')!.touched)"
+            class="alert-danger d-inline-flex"><small id="emailHelp" class="form-text text-muted">Campo
+              requerido</small></div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
+      </div>
+      <div class="col-sm-4">
+        <button type="button" class="w-100 btn btn-lg btn-primary" (click)="altaPizza()">Nueva Pizza</button>
+      </div>
+      <div class="col-sm-4">
+        <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
+      </div>
+    </div>
+  </div>
+</form>

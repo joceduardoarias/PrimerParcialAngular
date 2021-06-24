@@ -3,4 +3,5 @@ export class Usuario {
     email!:string;
     tipo!:string;
     id!:string;
+    password!:string;
 }

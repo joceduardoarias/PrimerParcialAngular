@@ -31,7 +31,8 @@ public async signOut() {
  * 
  */
 public async registrar(email:string, password:string) {
-  return this.afAuth.createUserWithEmailAndPassword(email,password);
+  await this.afAuth.createUserWithEmailAndPassword(email,password);
+  this.signOut();
 }
 
 getCurrentUser() {

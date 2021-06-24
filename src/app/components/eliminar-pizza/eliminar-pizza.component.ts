@@ -21,6 +21,8 @@ export class EliminarPizzaComponent implements OnInit {
   }
 
   eliminarPizza(){
+    console.log(this.pizza);
+    
     this.pizzaService.delete(this.pizza.id);
   }
   

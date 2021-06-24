@@ -11,9 +11,15 @@ export class PizzaComponent implements OnInit {
   altaPizza:boolean = false;
   listaPizza:Pizza[] = [];
   auxPizza:Pizza;
+
   constructor(private pizzaService:PizzaService) {
-    this.getAll();
-    
+    // this.getAll();
+    this.pizzaService.pizzas.subscribe(res=>{
+      this.listaPizza = [];
+      res.map(a=>{
+        this.listaPizza.push(a);
+      });
+    });
    }
 
   ngOnInit(): void {
@@ -22,28 +28,14 @@ export class PizzaComponent implements OnInit {
   nuevaPizza(){
     this.altaPizza = true;
   }
-
+  
   manejarNuevaPizza(nuevaPizza:Pizza){
-    this.listaPizza.push(nuevaPizza);
+
+    this.pizzaService.create(nuevaPizza);
+    // this.listaPizza.push(nuevaPizza);
     console.log(this.listaPizza);
+    this.altaPizza = false;
     
   }
-
-  getAll(){
-    var contador = 0;
-    this.listaPizza = [];
-    this.auxPizza = new Pizza();
-    var lista = this.pizzaService.pizzaRef.valueChanges({ idField: 'propertyId' })
-     lista.subscribe(lista=>{
-       for (var pizza of lista) {
-         if (contador<lista.length) {
-          this.auxPizza = pizza;  
-          this.auxPizza.id = pizza.propertyId; 
-          this.listaPizza.push(pizza);
-          console.log(contador);
-         }
-         contador++;
-       }
-     });       
-  }
+  
 }

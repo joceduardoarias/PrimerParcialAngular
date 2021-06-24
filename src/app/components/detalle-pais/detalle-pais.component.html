@@ -2,10 +2,11 @@
     <div class="h-100 p-5 bg-light border rounded-3">
       <h2>País de origen</h2>
       <p *ngIf="repartidor!=null">{{repartidor.pais}}</p>
-      <p *ngIf="repartidor!=null">{{repartidor.idoma}}</p>
-      <p *ngIf="repartidor!=null">{{repartidor.capital}}</p>
+      <p *ngIf="repartidor!=null">Idioma: {{repartidor.idioma}}</p>
+      <p *ngIf="repartidor!=null">Capital: {{repartidor.capital}}</p>
+      Bandera:
       <img *ngIf="repartidor!=null" [src]="repartidor.bandera" alt="" width="50px" height="50px">
-      <p>Or, keep it light and add a border for some added definition to the boundaries of your content. Be sure to look under the hood at the source HTML here as we've adjusted the alignment and sizing of both column's content for equal-height.</p>
-      <button class="btn btn-outline-secondary" type="button">Example button</button>
+      <p>Esta es la infromacíon detallada acerca del país de origen del repartidor seleccionado.</p>
+      <!-- <button class="btn btn-outline-secondary" type="button">Example button</button> -->
     </div>
 </div>

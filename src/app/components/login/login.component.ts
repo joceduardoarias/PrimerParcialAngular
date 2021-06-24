@@ -44,11 +44,11 @@ export class LoginComponent implements OnInit {
     });
   }
   admin(){
-    this.email.setValue("test@test.com");
+    this.email.setValue("admin@admin.com");
     this.password.setValue("123456");
   }
   user(){
-    this.email.setValue("user@user.com");
+    this.email.setValue("empleado@empleado.com");    
     this.password.setValue("123456");
   }
 }
