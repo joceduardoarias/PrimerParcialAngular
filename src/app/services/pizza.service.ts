@@ -46,6 +46,8 @@ export class PizzaService {
   }
 
   delete(id: string): Promise<void> {
+    console.log("Elimina esta pizza",id);
+    
     return this.pizzaRef.doc(id).delete();
   }
 }

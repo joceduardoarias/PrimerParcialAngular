@@ -29,6 +29,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
+import { GestionarRepartoComponent } from './components/gestionar-reparto/gestionar-reparto.component';
+import { ListarPizzasComponent } from './components/listar-pizzas/listar-pizzas.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { RegistrarComponent } from './components/registrar/registrar.component';
     EliminarPizzaComponent,
     NavBarComponent,
     RegistrarComponent,
+    GestionarRepartoComponent,
+    ListarPizzasComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,5 +7,7 @@ export class Repartidor {
     dni:string;
     bandera:string;
     idioma:string;
-    capital:string
+    capital:string;
+    pizzas:any[]=[];
+    id:string;
 }

@@ -1,0 +1,31 @@
+<section class="text-center">
+    <div class="container">
+      <h1>Listado de pizzas</h1>
+    </div>
+  </section>
+<div class="album py-5 bg-light">
+    <div class="container">
+  
+      <div class="row">
+        <div class="col-md-4" *ngFor="let pizza of listPizzas">
+          <div class="card mb-4 shadow-sm">              
+            <div class="card-body">
+              <p class="card-text">Si tienes hambre y te apetece pedir comida a domicilio, LaPizzeria es la mejor opción.</p>
+                <p>Variedad: {{pizza.nombre}}</p>
+                <p>Ingredientes: {{pizza.ingredientes}}</p>
+                <p>Peso: {{pizza.peso}}</p>
+                <p>Precio: {{pizza.precio}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" (click)="pizzaSeleccionada(pizza)">Seleccionar</button>
+                  <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                </div>
+                <!-- <small class="text-muted">9 mins</small> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

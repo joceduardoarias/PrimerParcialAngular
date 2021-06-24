@@ -1,0 +1,14 @@
+<br>
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1>Gestionar reparto</h1>
+    <p class="lead text-muted">Seleccione un repartidor y luego selecciona las pizzas que se van asignar al mismo</p>
+    <p>
+      <!-- <a href="#" class="btn btn-primary my-2">Main call to action</a>
+      <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+    </p>
+  </div>
+</section>
+<app-listado-repartidores (enviarRepartidor)="manejarRepartidor($event)"></app-listado-repartidores>
+
+<app-listar-pizzas (enviarPizza)="manejarPizza($event)"></app-listar-pizzas>

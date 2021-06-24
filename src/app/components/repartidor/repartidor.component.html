@@ -6,8 +6,8 @@
         <p>Esta es la infromacíon detallada acerca del repartidor seleccionado.</p>
         <p *ngIf="repartidor!=null">Nombre: {{repartidor.nombre}}</p>
         <p *ngIf="repartidor!=null">Edad: {{repartidor.edad}}</p>
-        <p *ngIf="repartidor!=null">Capacidad{{repartidor.capacidad}}</p>
-        <p *ngIf="repartidor!=null">Unidad propia: {{repartidor.unidaPropia}}</p>
+        <p *ngIf="repartidor!=null">Capacidad: {{repartidor.capacidad}}</p>
+        <p *ngIf="repartidor!=null && repartidor.unidadpropia">Unidad propia: SI</p>
         <p *ngIf="repartidor!=null">DNI: {{repartidor.dni}}</p>
         <!-- <button class="btn btn-outline-light" type="button">Example button</button> -->
       </div>

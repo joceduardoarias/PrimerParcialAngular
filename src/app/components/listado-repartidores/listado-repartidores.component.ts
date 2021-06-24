@@ -15,7 +15,13 @@ export class ListadoRepartidoresComponent implements OnInit {
   listaRep:any[]=[];
 
   constructor(private repartidorService:RepartidoresService) { 
-    this.getAll();
+    // this.getAll();
+    this.repartidorService.repartidores.subscribe(res=>{
+      this.listaRep = [];
+      res.map(a=>{
+        this.listaRep.push(a);
+      })
+    })
   }
 
   ngOnInit(): void {

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Repartidor } from "../../modelos/repartidor";
 import { RepartidoresService } from "../../services/repartidores.service";
 import { PaisesService } from "../../services/paises.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alta-repartidor',
@@ -60,6 +61,13 @@ export class AltaRepartidorComponent implements OnInit {
     
     this.repartidorSericio.create(this.repartidor);
     this.formGroup.reset();
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Repartidor dado de alta correctamente',
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
 
 }
