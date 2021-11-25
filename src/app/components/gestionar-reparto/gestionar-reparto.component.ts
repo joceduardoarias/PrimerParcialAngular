@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Pizza } from 'src/app/modelos/pizza';
 import { Repartidor } from 'src/app/modelos/repartidor';
+import { Contenedor } from "../../modelos/contenedor";
 import Swal from 'sweetalert2';
-import { RepartidoresService } from "../../services/repartidores.service";
+import { ContenedorService } from "../../services/contenedor.service";
 import { PizzaService } from "../../services/pizza.service";
 @Component({
   selector: 'app-gestionar-reparto',
@@ -12,30 +13,30 @@ import { PizzaService } from "../../services/pizza.service";
 export class GestionarRepartoComponent implements OnInit {
 
   pizza:Pizza;
-  repartidor:Repartidor;
+  contenedor:Contenedor;
   totalPizzas:Pizza[]=[];
 
-  constructor(private reparService:RepartidoresService, private pizzaService:PizzaService) { }
+  constructor(private contenedorService:ContenedorService, private pizzaService:PizzaService) { }
 
   ngOnInit(): void {
   }
 
-  manejarPizza(pizza:Pizza){
+  manejarProducto(pizza:Pizza){
     this.pizza = pizza;
     console.log("gestiona esta pizza: ",this.pizza);
-    console.log("repartidor: ", this.repartidor);
+    console.log("contenedor: ", this.contenedor);
     
-    //Agregar pizza
-    if (this.repartidor != null) {
-      if(parseInt(this.repartidor.capacidad) > this.repartidor.pizzas.length){
-        this.repartidor.pizzas.push(this.pizza.id);
-        this.reparService.update(this.repartidor.id,this.repartidor);
-        this.pizzaService.delete(this.pizza.id);
+    //Agregar producto
+    if (this.contenedor != null) {
+      if(this.contenedor.capacidad > this.contenedor.productos.length){
+        this.contenedor.productos.push(this.pizza.descripcion);
+        this.contenedorService.updateProductos(this.contenedor.id,this.contenedor);
+        // this.pizzaService.delete(this.pizza.id);
         Swal.fire({
           position: 'center',
           icon: 'success',
-          title: 'Pizza asignada!',
-          text:"Capacidad: "+this.repartidor.capacidad+" "+"Total Pizzas asignadas: "+this.repartidor.pizzas.length,
+          title: 'Producto asignada!',
+          text:"Capacidad: "+this.contenedor.capacidad+" "+"Total productos asignadas: "+this.contenedor.productos.length,
           showConfirmButton: false,
           timer: 1500
         });
@@ -43,7 +44,7 @@ export class GestionarRepartoComponent implements OnInit {
         Swal.fire({
           position: 'center',
           icon: 'info',
-          title: 'El repartidor esta al tope de su capacidad!',
+          title: 'El contenedor esta al tope de su capacidad!',
           showConfirmButton: false,
           timer: 1500
         });
@@ -52,7 +53,7 @@ export class GestionarRepartoComponent implements OnInit {
       Swal.fire({
         position: 'center',
         icon: 'info',
-        title: 'Debe seleccionar un repartidor!',
+        title: 'Debe seleccionar un contenedor!',
         showConfirmButton: false,
         timer: 1500
       });
@@ -60,14 +61,14 @@ export class GestionarRepartoComponent implements OnInit {
     
   }
 
-  manejarRepartidor(repartidor:Repartidor){
-    this.repartidor =repartidor;
-    console.log("maneja este repartido: ",this.repartidor);   
+  manejarConetedor(contenedor:Contenedor){
+    this.contenedor =contenedor;
+    console.log("maneja este contenedor: ",this.contenedor);   
     Swal.fire({
       position: 'center',
       icon: 'info',
-      title: 'Seleccionaste a '+this.repartidor.nombre,
-      text:"Capacidad: "+this.repartidor.capacidad,
+      title: 'Seleccionaste a '+this.contenedor.marca,
+      text:"Capacidad: "+this.contenedor.capacidad,
       showConfirmButton: false,
       timer: 1500
     });

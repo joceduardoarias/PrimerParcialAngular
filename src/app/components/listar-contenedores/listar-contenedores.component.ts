@@ -10,7 +10,9 @@ export class ListarContenedoresComponent implements OnInit {
 
   @Output()
   enviarContenedor:EventEmitter<Contenedor> = new EventEmitter<Contenedor>();
+  
   listContenedores:Contenedor[];
+  
   constructor(private contenedorService: ContenedorService) { }
 
   ngOnInit(): void {

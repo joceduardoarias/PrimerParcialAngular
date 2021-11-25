@@ -3,4 +3,5 @@ export class Contenedor {
     codigo:string;
     marca:string;
     id:string;
+    productos:any[]=[];
 }
