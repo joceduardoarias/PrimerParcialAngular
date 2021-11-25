@@ -1,12 +1,12 @@
 <div class="col-md-6">
     <div class="h-100 p-5 bg-light border rounded-3">
       <h2>País de origen</h2>
-      <p *ngIf="repartidor!=null">{{repartidor.pais}}</p>
-      <p *ngIf="repartidor!=null">Idioma: {{repartidor.idioma}}</p>
-      <p *ngIf="repartidor!=null">Capital: {{repartidor.capital}}</p>
+      <p *ngIf="producto!=null">{{producto.pais}}</p>
+      <p *ngIf="producto!=null">Idioma: {{producto.lenguaje}}</p>
+      <p *ngIf="producto!=null">Moneda: {{producto.moneda}}</p>
       Bandera:
-      <img *ngIf="repartidor!=null" [src]="repartidor.bandera" alt="" width="50px" height="50px">
-      <p>Esta es la infromacíon detallada acerca del país de origen del repartidor seleccionado.</p>
+      <img *ngIf="producto!=null" [src]="producto.bandera" alt="" width="50px" height="50px">
+      <p>Esta es la infromacíon detallada acerca del país de origen del producto seleccionado.</p>
       <!-- <button class="btn btn-outline-secondary" type="button">Example button</button> -->
     </div>
 </div>

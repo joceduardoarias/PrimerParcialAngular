@@ -12,7 +12,7 @@
                     <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
             </div>
             <div class="col-sm-4">
-                <button type="button" class="w-100 btn btn-lg btn-primary" (click)="nuevaPizza()">Nuevo Producto</button>
+                <button type="button" class="w-100 btn btn-lg btn-primary" (click)="nuevaProducto()">Nuevo Producto</button>
             </div>
             <div class="col-sm-4">
                 <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
@@ -29,13 +29,14 @@
       <div class="col" *ngFor="let pizza of listaPizza">
         <div class="card mb-4 rounded-3 shadow-sm border-primary">
           <div class="card-header py-3 text-white bg-primary border-primary">
-            <h4 class="my-0 fw-normal">{{pizza.nombre}}</h4>
+            <h4 class="my-0 fw-normal">{{pizza.descripcion}}</h4>
           </div>
           <div class="card-body">
-            <h1 class="card-title pricing-card-title">{{pizza.precio}}<small class="text-muted fw-light"></small></h1>
+            <h1 class="card-title pricing-card-title">${{pizza.precio}}<small class="text-muted fw-light"></small></h1>
             <ul class="list-unstyled mt-3 mb-4">
-              <li>{{pizza.ingredientes}}</li>
-              <li>{{pizza.peso}}</li>
+              <li>{{pizza.pais}}</li>
+              <li *ngIf="pizza.comestible">Producto comestible</li>
+              <li *ngIf="!pizza.comestible">Producto no comestible</li>
             </ul>
             <app-modificar-pizza [pizza]="pizza"></app-modificar-pizza>
             <app-eliminar-pizza [pizza]="pizza"></app-eliminar-pizza>

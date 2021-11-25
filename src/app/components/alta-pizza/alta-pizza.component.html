@@ -39,14 +39,14 @@
               id="precio"
               class="form-control"
               aria-label="Amount (to the nearest dollar)"
-              formControlName="precio"
+              formControlName="codigo"
             />
           </div>
           <div
             *ngIf="
-              formGruop.get('precio')!.invalid &&
-              (formGruop.get('precio')!.dirty ||
-                formGruop.get('precio')!.touched)
+              formGruop.get('codigo')!.invalid &&
+              (formGruop.get('codigo')!.dirty ||
+                formGruop.get('codigo')!.touched)
             "
             class="alert-danger d-inline-flex"
           >
@@ -140,10 +140,17 @@
       <div class="col-sm-3">
         <div class="row justify-content-center">          
           <div class="col-sm-6 custom-control custom-checkbox" style="margin-left: 30px;">          
-            <input type="checkbox" class="custom-control-input" id="same-address" (click)="validaCheckBox()" formControlName="comestible">
-            <label class="custom-control-label" for="same-address">Comestible</label>
-            <div *ngIf="!validaComestible && (formGruop.get('comestible')!.dirty || formGruop.get('comestible')!.touched)" class="alert-danger d-inline-flex">
-              <span>Campo es requirido.</span> 
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="true" id="comestible" >
+              <label class="form-check-label" for="comestible">
+                Comestible
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="false" id="noComestible" >
+              <label class="form-check-label" for="noComestible">
+                No comestible
+              </label>
             </div>
           </div>
         </div>

@@ -25,7 +25,7 @@ export class PizzaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  nuevaPizza(){
+  nuevaProducto(){
     this.altaPizza = true;
   }
   /**

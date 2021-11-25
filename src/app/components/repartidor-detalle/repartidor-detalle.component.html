@@ -9,11 +9,11 @@
       </a>
     </header>
     <!-- padre -->
-   <app-listado-repartidores (enviarRepartidor)="manejadorRepartidor($event)"></app-listado-repartidores>    
+   <app-listado-repartidores (enviarProducto)="manejadorProducto($event)"></app-listado-repartidores>    
    <div class="row align-items-md-stretch">
      <!-- hijo -->
-    <app-repartidor [repartidor]="repartidorP"></app-repartidor>
-    <app-detalle-pais [repartidor]="repartidorP"></app-detalle-pais>
+    <app-repartidor [producto]="producto"></app-repartidor>
+    <app-detalle-pais [producto]="producto"></app-detalle-pais>
     </div>
   </div>
 </main>

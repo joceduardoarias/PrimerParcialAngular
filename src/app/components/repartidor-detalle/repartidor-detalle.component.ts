@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Repartidor } from "../../modelos/repartidor";
+import { Pizza } from 'src/app/modelos/pizza';
 @Component({
   selector: 'app-repartidor-detalle',
   templateUrl: './repartidor-detalle.component.html',
@@ -7,14 +8,16 @@ import { Repartidor } from "../../modelos/repartidor";
 })
 export class RepartidorDetalleComponent implements OnInit {
 
-  repartidorP:Repartidor;
+  producto:Pizza;
   
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  manejadorRepartidor(repartidor:Repartidor){
-    this.repartidorP = repartidor;
+  manejadorProducto(producto:Pizza){
+    console.log(producto);
+    
+    this.producto = producto;
   }
 }

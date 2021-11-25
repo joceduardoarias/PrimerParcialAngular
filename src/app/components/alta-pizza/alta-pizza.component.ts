@@ -27,7 +27,7 @@ export class AltaPizzaComponent implements OnInit {
       descripcion : new FormControl('',Validators.required),
       precio : new FormControl('',Validators.required),
       stock : new FormControl('',[Validators.required,Validators.min(500),Validators.max(1000),]),
-      comestible : new FormControl('',Validators.required),
+      codigo : new FormControl('',Validators.required)
     });
   }
 
@@ -36,11 +36,12 @@ export class AltaPizzaComponent implements OnInit {
    * pizza para que este haga el alta.
    */
   altaPizza(){
-    if (this.formGruop.status=='VALID') {
+    if (this.formGruop.status=='VALID' && this.validate()) {
       this.nuevoProducto.descripcion = this.formGruop.get('descripcion').value;
       this.nuevoProducto.precio = this.formGruop.get('precio').value;
+      this.nuevoProducto.codigo = this.formGruop.get('codigo').value;
       this.nuevoProducto.stock = this.formGruop.get('stock').value;
-      this.nuevoProducto.comestible = this.formGruop.get('comestible').value;
+      
       console.log(this.nuevoProducto);
       
       this.enviarnuevoProducto(this.nuevoProducto);   
@@ -68,11 +69,21 @@ export class AltaPizzaComponent implements OnInit {
     this.nuevoProducto.moneda = pais.currencies[0].name;
     this.nuevoProducto.lenguaje = pais.languages[0].nativeName;
   }
-  validaCheckBox(){
-    this.formGruop.get('comestible')!.valueChanges.subscribe((res:any)=>{
-      this.validaComestible = res;
-    })
-    console.log(this.formGruop.status);
+  
+  validate(){
+    var comestible = document.getElementById("comestible")as HTMLInputElement;;
+    var noComestible = document.getElementById("noComestible")as HTMLInputElement;;
     
-  }
+    if(comestible.checked == true)
+    {
+      this.nuevoProducto.comestible = true;
+      return true
+    }
+    if (noComestible.checked == true) {
+      this.nuevoProducto.comestible = false;
+      return true;
+    }
+
+    return false;
+    }
 }

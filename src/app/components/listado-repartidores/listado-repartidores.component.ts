@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { RepartidoresService } from "../../services/repartidores.service";
 import { Repartidor } from "../../modelos/repartidor";
+import { Pizza } from 'src/app/modelos/pizza';
+import { PizzaService } from "../../services/pizza.service";
 
 @Component({
   selector: 'app-listado-repartidores',
@@ -10,35 +12,36 @@ import { Repartidor } from "../../modelos/repartidor";
 export class ListadoRepartidoresComponent implements OnInit {
 
   @Output()
-  enviarRepartidor:EventEmitter<Repartidor> = new EventEmitter<Repartidor>();
+  enviarProducto:EventEmitter<Pizza> = new EventEmitter<Pizza>();
   
-  listaRep:any[]=[];
+  nuevoProducto: Pizza;
+  listaProductos:any[]=[];
 
-  constructor(private repartidorService:RepartidoresService) { 
+  constructor(private repartidorService:RepartidoresService,private pizzaService:PizzaService) { 
     // this.getAll();
-    this.repartidorService.repartidores.subscribe(res=>{
-      this.listaRep = [];
+    this.pizzaService.pizzas.subscribe(res=>{
+      this.listaProductos = [];
       res.map(a=>{
-        this.listaRep.push(a);
+        this.listaProductos.push(a);
       })
-    })
+    });
+    this.nuevoProducto = new Pizza();
   }
 
   ngOnInit(): void {
   }
 
   getAll(){
-    var lista = this.repartidorService.repartidorRef.valueChanges({ idField: 'propertyId' })
+    var lista = this.pizzaService.pizzaRef.valueChanges({ idField: 'propertyId' })
      lista.subscribe(lista=>{
       
-      this.listaRep = lista;
-      console.log(this.listaRep);
+      this.listaProductos = lista;
       
      });       
   }
 
-  repSeleccionado(repartidor:Repartidor){
-    console.log(repartidor);
-    this.enviarRepartidor.emit(repartidor);
+  productoSeleccionado(producto:Pizza){
+    console.log(producto);
+    this.enviarProducto.emit(producto);
   }
 }

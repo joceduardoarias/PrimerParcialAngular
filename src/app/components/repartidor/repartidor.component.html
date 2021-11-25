@@ -2,13 +2,14 @@
     <div class="col-md-6">
 
       <div class="h-100 p-5 text-white bg-dark rounded-3">
-        <h2>Detalle del repartidor</h2>
-        <p>Esta es la infromacíon detallada acerca del repartidor seleccionado.</p>
-        <p *ngIf="repartidor!=null">Nombre: {{repartidor.nombre}}</p>
-        <p *ngIf="repartidor!=null">Edad: {{repartidor.edad}}</p>
-        <p *ngIf="repartidor!=null">Capacidad: {{repartidor.capacidad}}</p>
-        <p *ngIf="repartidor!=null && repartidor.unidadpropia">Unidad propia: SI</p>
-        <p *ngIf="repartidor!=null">DNI: {{repartidor.dni}}</p>
+        <h2>Detalle del producto</h2>
+        <p>Esta es la infromacíon detallada acerca del producto seleccionado.</p>
+        <p *ngIf="producto!=null">Nombre: {{producto.nombre}}</p>
+        <p *ngIf="producto!=null">Stock: {{producto.stock}}</p>
+        <p *ngIf="producto!=null">Precio: {{producto.precio}}</p>
+        <p *ngIf="producto!=null && producto.comestible">Comestible</p>
+        <p *ngIf="producto!=null && !producto.comestible">No Comestible</p>
+        <p *ngIf="producto!=null">Codigo: {{producto.codigo}}</p>
         <!-- <button class="btn btn-outline-light" type="button">Example button</button> -->
       </div>
     </div>
