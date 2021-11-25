@@ -4,7 +4,7 @@
 <div class="container py-3">
   <header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-      <h1 class="display-4 fw-normal">Pizzas</h1>
+      <h1 class="display-4 fw-normal">Productos</h1>
       <p class="fs-5 text-muted">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It’s built with default Bootstrap components and utilities with little customization.</p>
       <div class="container">
         <div class="row" *ngIf="!altaPizza">
@@ -12,7 +12,7 @@
                     <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
             </div>
             <div class="col-sm-4">
-                <button type="button" class="w-100 btn btn-lg btn-primary" (click)="nuevaPizza()">Nueva Pizza</button>
+                <button type="button" class="w-100 btn btn-lg btn-primary" (click)="nuevaPizza()">Nuevo Producto</button>
             </div>
             <div class="col-sm-4">
                 <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Nueva Pizza</button> -->
@@ -22,7 +22,7 @@
     </div>
   </header>
   
-    <app-alta-pizza *ngIf="altaPizza" (enviar)="manejarNuevaPizza($event)"></app-alta-pizza>
+    <app-alta-pizza *ngIf="altaPizza" (enviar)="manejarNuevoProducto($event)"></app-alta-pizza>
   <br>
   <main>
     <div *ngIf="listaPizza!=null" class="row row-cols-1 row-cols-md-3 mb-3 text-center">      

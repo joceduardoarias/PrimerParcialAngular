@@ -28,10 +28,13 @@ export class PizzaComponent implements OnInit {
   nuevaPizza(){
     this.altaPizza = true;
   }
-  
-  manejarNuevaPizza(nuevaPizza:Pizza){
+  /**
+   * Da de alta el nuevo el producto que viene desde el componente alta-pizza
+   * @param nuevaProducto 
+   */
+  manejarNuevoProducto(nuevaProducto:Pizza){
 
-    this.pizzaService.create(nuevaPizza);
+    this.pizzaService.create(nuevaProducto);
     // this.listaPizza.push(nuevaPizza);
     console.log(this.listaPizza);
     this.altaPizza = false;

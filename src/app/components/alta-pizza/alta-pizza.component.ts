@@ -15,29 +15,35 @@ export class AltaPizzaComponent implements OnInit {
   enviar : EventEmitter<Pizza> = new EventEmitter<Pizza>();
 
   formGruop:FormGroup;
-  nuevaPizza: Pizza;
+  nuevoProducto: Pizza;
+  validaComestible : boolean = false;
 
   constructor(private pizzaService:PizzaService) {   
-    this.nuevaPizza = new Pizza();
+    this.nuevoProducto = new Pizza();
   }
 
   ngOnInit(): void {
     this.formGruop=new FormGroup({
-      nombre : new FormControl('',Validators.required),
-      ingredientes : new FormControl('',Validators.required),
+      descripcion : new FormControl('',Validators.required),
       precio : new FormControl('',Validators.required),
-      peso : new FormControl('',[Validators.required,Validators.min(500),Validators.max(1000),])
+      stock : new FormControl('',[Validators.required,Validators.min(500),Validators.max(1000),]),
+      comestible : new FormControl('',Validators.required),
     });
   }
 
+  /**
+   * hace el set de los datos del nuevo producto y envia el nuevo producto al componente
+   * pizza para que este haga el alta.
+   */
   altaPizza(){
     if (this.formGruop.status=='VALID') {
-      this.nuevaPizza.ingredientes = this.formGruop.get('ingredientes').value;
-      this.nuevaPizza.nombre = this.formGruop.get('nombre').value;
-      this.nuevaPizza.precio = this.formGruop.get('precio').value;
-      this.nuevaPizza.peso = this.formGruop.get('peso').value;
+      this.nuevoProducto.descripcion = this.formGruop.get('descripcion').value;
+      this.nuevoProducto.precio = this.formGruop.get('precio').value;
+      this.nuevoProducto.stock = this.formGruop.get('stock').value;
+      this.nuevoProducto.comestible = this.formGruop.get('comestible').value;
+      console.log(this.nuevoProducto);
       
-      this.enviarNuevaPizza(this.nuevaPizza);   
+      this.enviarnuevoProducto(this.nuevoProducto);   
       this.formGruop.reset();
     }else{
       Swal.fire({
@@ -51,7 +57,22 @@ export class AltaPizzaComponent implements OnInit {
    
   }
 
-  enviarNuevaPizza(nuevaPizza:Pizza){
-    this.enviar.emit(nuevaPizza);
+  enviarnuevoProducto(nuevoProducto:Pizza){
+    this.enviar.emit(nuevoProducto);
+  }
+
+  asignarPais(pais:any){
+    console.log(pais);
+    this.nuevoProducto.bandera = pais.flag;
+    this.nuevoProducto.pais = pais.name;
+    this.nuevoProducto.moneda = pais.currencies[0].name;
+    this.nuevoProducto.lenguaje = pais.languages[0].nativeName;
+  }
+  validaCheckBox(){
+    this.formGruop.get('comestible')!.valueChanges.subscribe((res:any)=>{
+      this.validaComestible = res;
+    })
+    console.log(this.formGruop.status);
+    
   }
 }

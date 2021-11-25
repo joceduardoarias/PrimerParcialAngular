@@ -13,7 +13,7 @@ export const environment = {
     appId: "1:126117589588:web:93bfad9f9d6c227e65f3c1"
   },
   apiURL : "https://api.github.com/users/joceduardoarias",
-  apiUrlPais : "https://restcountries.eu/rest/v2/regionalbloc/usan"
+  apiUrlPais : "https://restcountries.com/v2/regionalbloc/usan"
 };
 
 /*

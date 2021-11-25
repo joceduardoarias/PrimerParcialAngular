@@ -13,7 +13,7 @@ export class PizzaService {
   //Falta crear el servico en firebase
   //transportar los métodos para crear modificar y eliminar
   //crear la clase pizza
-  private dbPath = '/pizzas';
+  private dbPath = '/productos';
   pizzas: Observable<Pizza[]>;
   pizzaRef: AngularFirestoreCollection<Pizza>;
 
