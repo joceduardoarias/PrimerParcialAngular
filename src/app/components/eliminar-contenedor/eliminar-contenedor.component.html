@@ -1,0 +1,25 @@
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Eliminar contenedor</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Esta segura de eliminar la contenedor:</p>
+      <p>Marca: {{contenedor.marca}}</p>
+      <p>Capacidad:  {{contenedor.capacidad}}</p>
+      <p>Codigo:  {{contenedor.codigo}}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+      <button type="button" class="btn btn-outline-success" (click)="modal.close('Save click')" (click)="eliminarContenedor()">Ok</button>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-lg btn-outline-danger" (click)="open(content)">Eliminar</button>
+  
+  <hr>
+  
+  <!-- <pre>{{ closeResult }}</pre> -->

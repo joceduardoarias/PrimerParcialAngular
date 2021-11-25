@@ -31,6 +31,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RegistrarComponent } from './components/registrar/registrar.component';
 import { GestionarRepartoComponent } from './components/gestionar-reparto/gestionar-reparto.component';
 import { ListarPizzasComponent } from './components/listar-pizzas/listar-pizzas.component';
+import { ListarContenedoresComponent } from './components/listar-contenedores/listar-contenedores.component';
+import { ModificarConetendorComponent } from './components/modificar-conetendor/modificar-conetendor.component';
+import { EliminarContenedorComponent } from './components/eliminar-contenedor/eliminar-contenedor.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,9 @@ import { ListarPizzasComponent } from './components/listar-pizzas/listar-pizzas.
     RegistrarComponent,
     GestionarRepartoComponent,
     ListarPizzasComponent,
+    ListarContenedoresComponent,
+    ModificarConetendorComponent,
+    EliminarContenedorComponent,
   ],
   imports: [
     BrowserModule,

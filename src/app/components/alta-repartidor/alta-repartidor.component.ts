@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Repartidor } from "../../modelos/repartidor";
+import { Contenedor } from "../../modelos/contenedor";
 import { RepartidoresService } from "../../services/repartidores.service";
+import { ContenedorService } from "../../services/contenedor.service";
 import { PaisesService } from "../../services/paises.service";
 import Swal from 'sweetalert2';
 
@@ -12,59 +14,39 @@ import Swal from 'sweetalert2';
 })
 export class AltaRepartidorComponent implements OnInit {
 
-  repartidor: Repartidor;
+  contenedor: Contenedor;
 
   formGroup: FormGroup = new FormGroup({});
   listaPaises : any[];
-  validaUnidad : boolean = false;
 
-  constructor(private repartidorSericio : RepartidoresService, private paisesService: PaisesService) { 
-    this.repartidor = new Repartidor();
+  constructor(private contenedorService: ContenedorService) { 
+    this.contenedor = new Contenedor();
   }
 
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       
-      dni : new FormControl('',Validators.required),
-      edad : new FormControl('',Validators.required),
+      codigo : new FormControl('',Validators.required),
       capacidad : new FormControl('',Validators.required),
-      // pais : new FormControl('',Validators.required),
-      unidadPrpia : new FormControl('',Validators.required),
-      nombre : new FormControl('',Validators.required)
+      marca : new FormControl('',Validators.required)
 
     });            
   }
   
-  validaCheckBox(){
-    this.formGroup.get('unidadPrpia')!.valueChanges.subscribe((res:any)=>{
-      this.validaUnidad = res;
-    })
-    console.log(this.formGroup.status);
-    
-  }
-  asignarPais(pais:any){
-    console.log(pais);
-    this.repartidor.pais = pais.name;
-    this.repartidor.bandera = pais.flag;
-    this.repartidor.capital = pais.capital;
-    this.repartidor.idioma = pais.languages[0].nativeName;
-  }
-
   guardar(){
 
-    this.repartidor.nombre = this.formGroup.get("nombre").value;
-    this.repartidor.capacidad = this.formGroup.get("capacidad").value;
-    this.repartidor.edad = this.formGroup.get("edad").value;
-    this.repartidor.dni = this.formGroup.get("dni").value;
+    this.contenedor.marca = this.formGroup.get("marca").value;
+    this.contenedor.capacidad = this.formGroup.get("capacidad").value;
+    this.contenedor.codigo = this.formGroup.get("codigo").value;
     
-    console.log(this.repartidor);
+    console.log(this.contenedor);
     
-    this.repartidorSericio.create(this.repartidor);
+    this.contenedorService.create(this.contenedor);
     this.formGroup.reset();
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: 'Repartidor dado de alta correctamente',
+      title: 'contenedor dado de alta correctamente',
       showConfirmButton: false,
       timer: 1500
     });
