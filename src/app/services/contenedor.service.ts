@@ -40,6 +40,8 @@ export class ContenedorService {
     });
   }
   updateProductos(id: string, data: Contenedor): Promise<void> {
+    console.log(data);
+    
     return this.contenedorRef.doc(id).update({
       productos : data.productos,
       ocupacion: data.ocupacion

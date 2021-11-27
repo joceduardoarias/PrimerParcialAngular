@@ -26,28 +26,51 @@ export class GestionarRepartoComponent implements OnInit {
     
     this.pizza = pizza;
     this.pizza.cantidad = this.cantidad;
-    console.log("gestiona esta pizza: ",this.pizza);
-    console.log("contenedor: ", this.contenedor);
     
     //Agregar productoKU
     if (this.contenedor != null) {
-      if(this.contenedor.capacidad > this.contenedor.ocupacion && this.cantidad < this.contenedor.ocupacion){
-        this.contenedor.ocupacion += this.cantidad;
-        this.contenedor.productos.push(this.pizza);
-        console.log(this.contenedor.id);
-        
-        this.contenedorService.updateProductos(this.contenedor.id,this.contenedor).then((a)=>{
-          this.cantidad = 0;
-        });
-        // this.pizzaService.delete(this.pizza.id);
-        Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Producto asignada!',
-          text:"Capacidad: "+this.contenedor.capacidad+" "+"Total productos asignadas: "+this.contenedor.productos.length,
-          showConfirmButton: false,
-          timer: 1500
-        });
+      if(this.contenedor.capacidad > this.contenedor.ocupacion &&  this.cantidad <= this.contenedor.capacidad){
+        if (this.contenedor.ocupacion != 0) {
+          this.contenedor.ocupacion += this.cantidad;
+          if (this.contenedor.ocupacion <= this.contenedor.capacidad) {
+            this.contenedor.productos.push(this.pizza);
+            this.contenedorService.updateProductos(this.contenedor.id,this.contenedor).then((a)=>{
+              this.cantidad = 0;
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Producto asignada!',
+                text:"Capacidad: "+this.contenedor.capacidad+" "+"Total productos asignadas: "+this.contenedor.productos.length,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            });
+          }else{
+            Swal.fire({
+              position: 'center',
+              icon: 'info',
+              title: 'El contenedor esta al tope de su capacidad!',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }         
+         
+        }else if (this.cantidad <= this.contenedor.capacidad) {
+          this.contenedor.ocupacion += this.cantidad;
+          this.contenedor.productos.push(this.pizza);
+          this.contenedorService.updateProductos(this.contenedor.id,this.contenedor).then((a)=>{
+            this.cantidad = 0;
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Producto asignada!',
+              text:"Capacidad: "+this.contenedor.capacidad+" "+"Total productos asignadas: "+this.contenedor.ocupacion,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          });
+        }
+              
       }else{
         Swal.fire({
           position: 'center',
@@ -71,7 +94,6 @@ export class GestionarRepartoComponent implements OnInit {
 
   manejarConetedor(contenedor:Contenedor){
     this.contenedor =contenedor;
-    console.log("maneja este contenedor: ",this.contenedor);   
     Swal.fire({
       position: 'center',
       icon: 'info',
