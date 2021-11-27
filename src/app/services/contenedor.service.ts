@@ -41,7 +41,8 @@ export class ContenedorService {
   }
   updateProductos(id: string, data: Contenedor): Promise<void> {
     return this.contenedorRef.doc(id).update({
-      productos : data.productos
+      productos : data.productos,
+      ocupacion: data.ocupacion
     });
   }
   delete(id: string): Promise<void> {

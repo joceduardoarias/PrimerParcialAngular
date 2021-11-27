@@ -11,7 +11,7 @@ export class ListarPizzasComponent implements OnInit {
 
   @Output()
   enviarPizza:EventEmitter<Pizza> = new EventEmitter<Pizza>();
-
+  cantidad:number;
   listPizzas:Pizza[];
 
   constructor(private pizzaService:PizzaService) { 
@@ -27,6 +27,9 @@ export class ListarPizzasComponent implements OnInit {
   }
 
   pizzaSeleccionada(pizza:Pizza){
+    
+    // console.log(this.cantidad);
+    // pizza.cantidad = this.cantidad;
     this.enviarPizza.emit(pizza);
     console.log(pizza);
     

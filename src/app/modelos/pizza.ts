@@ -12,4 +12,5 @@ export class Pizza {
     moneda:string;
     bandera:string;
     lenguaje:string;
+    cantidad:number;
 }

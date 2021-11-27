@@ -14,23 +14,31 @@ export class GestionarRepartoComponent implements OnInit {
 
   pizza:Pizza;
   contenedor:Contenedor;
-  totalPizzas:Pizza[]=[];
-
-  constructor(private contenedorService:ContenedorService, private pizzaService:PizzaService) { }
+  cantidad:number;
+  constructor(private contenedorService:ContenedorService, private pizzaService:PizzaService) { 
+   
+  }
 
   ngOnInit(): void {
   }
 
   manejarProducto(pizza:Pizza){
+    
     this.pizza = pizza;
+    this.pizza.cantidad = this.cantidad;
     console.log("gestiona esta pizza: ",this.pizza);
     console.log("contenedor: ", this.contenedor);
     
-    //Agregar producto
+    //Agregar productoKU
     if (this.contenedor != null) {
-      if(this.contenedor.capacidad > this.contenedor.productos.length){
-        this.contenedor.productos.push(this.pizza.descripcion);
-        this.contenedorService.updateProductos(this.contenedor.id,this.contenedor);
+      if(this.contenedor.capacidad > this.contenedor.ocupacion && this.cantidad < this.contenedor.ocupacion){
+        this.contenedor.ocupacion += this.cantidad;
+        this.contenedor.productos.push(this.pizza);
+        console.log(this.contenedor.id);
+        
+        this.contenedorService.updateProductos(this.contenedor.id,this.contenedor).then((a)=>{
+          this.cantidad = 0;
+        });
         // this.pizzaService.delete(this.pizza.id);
         Swal.fire({
           position: 'center',
